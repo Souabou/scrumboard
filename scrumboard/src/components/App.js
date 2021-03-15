@@ -1,14 +1,33 @@
+import React, { Component } from "react";
 import ScrumList from './ScrumList';
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Scrumaya Board</h2>
-        <ScrumList title="test"/>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const { lists } = this.props;
+    return (
+      <div className="App">
+        <h2>Scrum Board</h2>
+        <div style={styles.listsContainer}>
+          { lists.map(list => (
+            <ScrumList title={list.title} cards={list.cards} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+const styles = {
+  listsContainer: {
+    display: "flex",
+    flexDirection: "row"
+    
+  }
+}
+
+const mapStateToProps = state => ({
+  lists: state.lists
+});
+
+export default connect(mapStateToProps)(App);
