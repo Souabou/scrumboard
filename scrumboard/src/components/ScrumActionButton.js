@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "@material-ui/core/icon";
 import TextareaAutosize from 'react-textarea-autosize';
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 
 class ScrumActionButton extends React.Component {
 
@@ -40,7 +41,7 @@ class ScrumActionButton extends React.Component {
             <div 
             onClick={this.openForm}
             style={{
-                ...styles.openForButtonGroup,
+                ...styles.openFormButtonGroup,
                 opacity: buttonTextOpacity, color: buttonTextColor, backgroundColor: buttonTextBackground}}>
                 <Icon>add</Icon>
                 <p>{buttonText}</p>
@@ -80,6 +81,15 @@ class ScrumActionButton extends React.Component {
                         }}
                     />
                 </Card>
+                <div style={styles.formButtonGroup}>
+                    <Button 
+                        variant="contained" 
+                        style={{ color: "white", backgroundColor: "#F9690E" }}
+                    >
+                        {buttonTitle} {" "}
+                    </Button>
+                    <Icon style={{ marginLeft: 8, cursor: "pointer" }}>close</Icon>
+                </div>
             </div>
         );
     };
@@ -89,7 +99,7 @@ class ScrumActionButton extends React.Component {
     }
 }
 const styles = {
-    openForButtonGroup: {
+    openFormButtonGroup: {
         display: "flex",
         alignItems: "center",
         cursor: "pointer",
@@ -97,7 +107,12 @@ const styles = {
         height: 36,
         width: 272,
         paddingLeft: 10
-
+    },
+    formButtonGroup: {
+        marginTop: 8,
+        display: "flex",
+        alignItems: "center"
     }
 };
+
 export default ScrumActionButton;

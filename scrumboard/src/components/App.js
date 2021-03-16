@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ScrumList from './ScrumList';
 import { connect } from "react-redux";
+import ScrumActionButton from "./ScrumActionButton";
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           { lists.map(list => (
             <ScrumList key={list.id} title={list.title} cards={list.cards} />
           ))}
+          <ScrumActionButton list />
         </div>
       </div>
     );
