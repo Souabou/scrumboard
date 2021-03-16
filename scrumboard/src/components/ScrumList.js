@@ -2,14 +2,14 @@ import React from 'react';
 import ScrumCard from "./ScrumCard";
 import ScrumActionButton from "./ScrumActionButton";
 
-const ScrumList = ({title, cards}) => {
+const ScrumList = ({title, cards, listID }) => {
     return (
         <div style={styles.container}>
             <h4>{title}</h4>
             { cards.map(card => (
                 <ScrumCard key={card.id} text={card.text} /> 
             ))}
-            <ScrumActionButton />
+            <ScrumActionButton listID={listID} />
         </div>
     );
 };
