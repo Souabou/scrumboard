@@ -4,7 +4,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
-import { addList } from "../actions";
+import { addList, addCard } from "../actions";
 
 class ScrumActionButton extends React.Component {
 
@@ -36,7 +36,24 @@ class ScrumActionButton extends React.Component {
         const { text } = this.state;
 
         if (text) {
-            dispatch(addList(text))
+            this.setState({
+                text:""
+            });
+            dispatch(addList(text));
+        }
+
+        return;
+    };
+
+    handleAddCard = () => {
+        const { dispatch, listID } = this.props;
+        const { text } = this.state;
+
+        if (text) {
+            this.setState({
+                text:""
+            });
+            dispatch(addCard(listID, text))
         }
 
         return;
@@ -45,7 +62,7 @@ class ScrumActionButton extends React.Component {
     renderAddButton = () => {
         const { list } = this.props;
 
-        const buttonText = list ? "Add another list" : "Add another card";
+        const buttonText = list ? "Add new list" : "Add new card";
         const buttonTextOpacity = list ? 1 : 0.5;
         const buttonTextColor = list ? "white" : "inherit";
         const buttonTextBackground = list ? "rgba(0,0,0,.15)" : "inherit";
@@ -96,7 +113,7 @@ class ScrumActionButton extends React.Component {
                 </Card>
                 <div style={styles.formButtonGroup}>
                     <Button 
-                        onMouseDown={this.handleAddList}
+                        onMouseDown={list ? this.handleAddList : this.handleAddCard }
                         variant="contained" 
                         style={{ color: "white", backgroundColor: "#F9690E" }}
                     >

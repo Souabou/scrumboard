@@ -8,10 +8,10 @@ class App extends Component {
     const { lists } = this.props;
     return (
       <div className="App">
-        <h2>Scrum Board</h2>
+        <h2>SCRUMBOARD</h2>
         <div style={styles.listsContainer}>
           { lists.map(list => (
-            <ScrumList key={list.id} title={list.title} cards={list.cards} />
+            <ScrumList listID={list.id} key={list.id} title={list.title} cards={list.cards} />
           ))}
           <ScrumActionButton list />
         </div>
