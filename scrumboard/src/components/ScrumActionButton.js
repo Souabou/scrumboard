@@ -3,6 +3,8 @@ import Icon from "@material-ui/core/icon";
 import TextareaAutosize from 'react-textarea-autosize';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
+import { connect } from "react-redux";
+import { addList } from "../actions";
 
 class ScrumActionButton extends React.Component {
 
@@ -11,23 +13,34 @@ class ScrumActionButton extends React.Component {
         text:""
     };
 
-    closeForm = () => {
-        this.setState({
-            formOpen: false
-        });
-    };
-
     openForm = () => {
         this.setState({
             formOpen: true
         });
     };
 
+    closeForm = () => {
+        this.setState({
+            formOpen: false
+        });
+    };
+
     handleInputChange = e => {
         this.setState({
             text: e.target.value
-        })
-    }
+        });
+    };
+
+    handleAddList = () => {
+        const { dispatch } = this.props;
+        const { text } = this.state;
+
+        if (text) {
+            dispatch(addList(text))
+        }
+
+        return;
+    };
 
     renderAddButton = () => {
         const { list } = this.props;
@@ -83,6 +96,7 @@ class ScrumActionButton extends React.Component {
                 </Card>
                 <div style={styles.formButtonGroup}>
                     <Button 
+                        onMouseDown={this.handleAddList}
                         variant="contained" 
                         style={{ color: "white", backgroundColor: "#F9690E" }}
                     >
@@ -115,4 +129,4 @@ const styles = {
     }
 };
 
-export default ScrumActionButton;
+export default connect () (ScrumActionButton);
