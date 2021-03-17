@@ -1,16 +1,25 @@
 import React from 'react';
 import ScrumCard from "./ScrumCard";
 import ScrumActionButton from "./ScrumActionButton";
+import { Droppable } from "react-beautiful-dnd";
 
 const ScrumList = ({title, cards, listID }) => {
     return (
-        <div style={styles.container}>
-            <h4>{title}</h4>
-            { cards.map(card => (
-                <ScrumCard key={card.id} text={card.text} /> 
-            ))}
-            <ScrumActionButton listID={listID} />
-        </div>
+        <Droppable droppableId={String(listID)}>
+            {provided=>(
+                <div {...provided.droppableProps}
+                ref={provided.innerRef}
+                    style={styles.container}>
+                    <h4>{title}</h4>
+                    {cards.map(card => (
+                        <ScrumCard key={card.id} text={card.text} id={card.id} /> 
+                    ))}
+                    <ScrumActionButton listID={listID} />
+                    {provided.placeholder}
+
+                </div>
+            )}
+        </Droppable>
     );
 };
 
