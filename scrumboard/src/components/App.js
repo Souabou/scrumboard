@@ -2,11 +2,18 @@ import React, { Component } from "react";
 import ScrumList from './ScrumList';
 import { connect } from "react-redux";
 import ScrumActionButton from "./ScrumActionButton";
+import { DragDropContext } from "react-beautiful-dnd"
 
 class App extends Component {
+
+  onDragEndnd = () => {
+    // todo: reording logic
+  };
+
   render() {
     const { lists } = this.props;
     return (
+      <DragDropContext onDragEndnd={ this.onDragEndnd}>
       <div className="App">
         <h2>SCRUMBOARD</h2>
         <div style={styles.listsContainer}>
@@ -16,6 +23,7 @@ class App extends Component {
           <ScrumActionButton list />
         </div>
       </div>
+      </DragDropContext>
     );
   }
 }
