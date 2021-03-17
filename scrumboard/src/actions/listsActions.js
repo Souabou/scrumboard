@@ -1,3 +1,4 @@
+import { Droppable } from "react-beautiful-dnd";
 import { CONSTANTS } from "../actions";
 
 export const addList = title => {
@@ -6,3 +7,22 @@ export const addList = title => {
         payload: title
     };
 };
+
+ export const sort = (
+     droppableIdStart,
+     droppableIdEnd,
+     droppanlaIndexStart,
+     droppableIndexEnd,
+     draggableId
+ ) => {
+     return {
+         type: CONSTANTS.DRAG_HAPPENED,
+         payload: {
+            droppableIdStart,
+            droppableIdEnd,
+            droppanlaIndexStart,
+            droppableIndexEnd,
+            draggableId
+         }
+     }
+ }

@@ -2,18 +2,33 @@ import React, { Component } from "react";
 import ScrumList from './ScrumList';
 import { connect } from "react-redux";
 import ScrumActionButton from "./ScrumActionButton";
-import { DragDropContext } from "react-beautiful-dnd"
+import { DragDropContext } from "react-beautiful-dnd";
+import { sort } from "../actions";
 
 class App extends Component {
-
-  onDragEndnd = () => {
+  onDragEnd = (result) => {
     // todo: reording logic
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+     return; 
+    }
+
+    this.props.dispatch(
+      sort(
+        source.droppableId,
+        destination.droppableId,
+        source.index,
+        destination.index,
+        draggableId
+      )
+    );
   };
 
   render() {
     const { lists } = this.props;
     return (
-      <DragDropContext onDragEndnd={ this.onDragEndnd}>
+      <DragDropContext onDragEnd={ this.onDragEnd}>
       <div className="App">
         <h2>SCRUMBOARD</h2>
         <div style={styles.listsContainer}>
@@ -26,7 +41,7 @@ class App extends Component {
       </DragDropContext>
     );
   }
-}
+};
 
 const styles = {
   listsContainer: {
