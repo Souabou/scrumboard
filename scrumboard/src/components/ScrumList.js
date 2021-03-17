@@ -11,8 +11,13 @@ const ScrumList = ({title, cards, listID }) => {
                 ref={provided.innerRef}
                     style={styles.container}>
                     <h4>{title}</h4>
-                    {cards.map(card => (
-                        <ScrumCard key={card.id} text={card.text} id={card.id} /> 
+                    {cards.map((card, index) => (
+                        <ScrumCard 
+                            key={card.id} 
+                            index={index}
+                            text={card.text} 
+                            id={card.id} 
+                        /> 
                     ))}
                     <ScrumActionButton listID={listID} />
                     {provided.placeholder}
