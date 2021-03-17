@@ -1,7 +1,7 @@
 import { CONSTANTS } from "../actions";
 
 let listID = 2;
-let cardID = 4;
+let cardID = 6;
 
 const initialState = [
     {
@@ -78,21 +78,21 @@ const listsReducer = (state = initialState, action) => {
 
         case CONSTANTS.DRAG_HAPPENED:
 
-        const {
-            droppableIdStart,
-            droppableIdEnd,
-            droppableIndexStart,
-            droppableIndexEnd,
-            // draggableId
-        } = action.payload;
+            const {
+                droppableIdStart,
+                droppableIdEnd,
+                droppableIndexStart,
+                droppableIndexEnd,
+                // draggableId
+            } = action.payload;
             const newState = [...state];
 
             //in the same list
             if(droppableIdStart === droppableIdEnd) {
                 console.log("same list")
                 const list = state.find(list => droppableIdStart === list.id);
-                const card = list.cards.splice(droppableIndexStart, 1)
-                list.cards.splice(droppableIndexEnd, 0, ...card)
+                const card = list.cards.splice(droppableIndexStart, 1);
+                list.cards.splice(droppableIndexEnd, 0, ...card);
             }
 
             return newState;
