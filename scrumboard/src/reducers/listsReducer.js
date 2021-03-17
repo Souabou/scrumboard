@@ -1,7 +1,7 @@
 import { CONSTANTS } from "../actions";
 
 let listID = 2;
-let cardID = 6;
+let cardID = 4;
 
 const initialState = [
     {
@@ -43,8 +43,6 @@ const initialState = [
 
 ];
 
-
-
 const listsReducer = (state = initialState, action) => {
     switch (action.type) {
 
@@ -61,11 +59,11 @@ const listsReducer = (state = initialState, action) => {
             const newCard = {
                 text: action.payload.text,
                 id: `card-${cardID}`
-            }
+            };
             cardID += 1;
 
             const newState = state.map(list => {
-                if(list.id === action.payload.listID) {
+                if (list.id === action.payload.listID) {
                     return {
                         ...list,
                         cards: [...list.cards, newCard]
@@ -83,17 +81,17 @@ const listsReducer = (state = initialState, action) => {
         const {
             droppableIdStart,
             droppableIdEnd,
-            droppanlaIndexStart,
+            droppableIndexStart,
             droppableIndexEnd,
-            draggableId
+            // draggableId
         } = action.payload;
             const newState = [...state];
 
             //in the same list
             if(droppableIdStart === droppableIdEnd) {
-                console.log(state)
-                const list = state.find(list => droppableIdStart === list.id)
-                const card = list.cards.splice(droppanlaIndexStart, 1)
+                console.log("same list")
+                const list = state.find(list => droppableIdStart === list.id);
+                const card = list.cards.splice(droppableIndexStart, 1)
                 list.cards.splice(droppableIndexEnd, 0, ...card)
             }
 
