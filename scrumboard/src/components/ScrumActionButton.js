@@ -65,7 +65,7 @@ class ScrumActionButton extends React.Component {
         const buttonText = list ? "Add new list" : "Add new card";
         const buttonTextOpacity = list ? 1 : 0.5;
         const buttonTextColor = list ? "white" : "inherit";
-        const buttonTextBackground = list ? "rgba(0,0,0,.15)" : "inherit";
+        const buttonTextBackground = list ? "rgba(0,0,0,.25)" : "inherit";
 
         return (
             <div 
