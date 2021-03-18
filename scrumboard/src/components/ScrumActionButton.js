@@ -82,7 +82,7 @@ class ScrumActionButton extends React.Component {
     renderForm = () => {
         const { list } = this.props;
 
-        const placeholder = list ? "Enter a list title..." : "Enter a title for this card...";
+        const placeholder = list ? "Enter a list title..." : "Enter a message for this card...";
 
         const buttonTitle = list ? "Add List" : "Add Card";
 
