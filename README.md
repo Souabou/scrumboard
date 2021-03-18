@@ -1,3 +1,2 @@
-# Getting Started with Create React App + deployAWS Amplify 
+# Here is my Scrumboard App Created with React + deployed on AWS Amplify 
 
-here is my #scrumboard project
