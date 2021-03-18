@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
-import CardContent from '@material-ui/core/CardContent';
+import Card from '@material-ui/icons/Card';
+import Typography from '@material-ui/icons/Typography';
+import CardContent from '@material-ui/icons/CardContent';
 import {Draggable} from "react-beautiful-dnd";
 import styled from "styled-components";
 
