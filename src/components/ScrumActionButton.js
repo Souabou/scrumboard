@@ -1,8 +1,8 @@
 import React from "react";
 import Icon from "@material-ui/icons";
 import TextareaAutosize from 'react-textarea-autosize';
-import Card from '@material-ui/icons/Card';
-import Button from '@material-ui/icons/Button';
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
 import { addList, addCard } from "../actions";
 
